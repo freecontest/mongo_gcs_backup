@@ -63,7 +63,7 @@ def upload_to_gcs_bucket(dump_filename, gcs_bucket):
     try:
         process.check_returncode()
     except subprocess.CalledProcessError as e:
-        print("CalledProcessError encountered while dumping database")
+        print("CalledProcessError encountered while uploading dump to GCS")
         print(f"Return code: {e.returncode}")
         print(f"stdout: '{e.stdout}'")
         print(f"stderr: '{e.stderr}'")
