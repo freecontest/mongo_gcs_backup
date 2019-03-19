@@ -54,6 +54,7 @@ def generate_dump_filename(db_name):
 def upload_to_gcs_bucket(dump_filename, gcs_bucket):
     process = subprocess.run([
         "gsutil",
+        "-q",
         "cp",
         dump_filename,
         f"gs://{gcs_bucket}/"
@@ -90,6 +91,6 @@ def main():
         )
 
     exit(0)
-    
+
 if __name__ == "__main__":
     main()
