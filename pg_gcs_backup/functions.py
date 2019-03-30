@@ -68,7 +68,7 @@ def restore(db_name: str,
             directory: str = None,
             yes: bool = False) -> bool:
     if not yes:
-        print("THIS WILL DROP THE DATABASE NAMED '{db_name}' BEFORE RESTORING")
+        print(f"THIS WILL DROP THE DATABASE NAMED '{db_name}' BEFORE RESTORING")
         print("Are you sure? (type 'yes' to continue): ")
         if input() != "yes":
             print("Invalid response, aborting")

@@ -62,20 +62,16 @@ def bucket_download(bucket, src, dst):
     try:
         process.check_returncode()
     except subprocess.CalledProcessError as e:
-        print("CalledProcessError encountered while uploading dump to GCS")
-        print(f"Return code: {e.returncode}")
-        print(f"stdout: '{e.stdout}'")
-        print(f"stderr: '{e.stderr}'")
-
+        utils.subprocess_error_dump(logger, e)
         return False
-    else:
-        return True
+
+    return True
 
 
 def bucket_read_content(bucket: str, src: str) -> bytes or None:
     _, temp_filename = tempfile.mkstemp()
 
-    if bucket_download(bucket, src, temp_filename):
+    if not bucket_download(bucket, src, temp_filename):
         return None
 
     with open(temp_filename, "rb") as f:

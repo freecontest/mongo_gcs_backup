@@ -62,7 +62,10 @@ def restore_dump(db_name: str,
     pg_restore_args = [
         "pg_restore",
         "--clean",
+        "--if-exists",
         "--single-transaction",
+        # TODO: filter out extensions instead
+        "-n", "public",
         dump_file
     ]
 

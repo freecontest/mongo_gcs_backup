@@ -14,7 +14,7 @@ def get_logger(is_verbose: bool = False) -> logging.Logger:
     if is_verbose:
         logger.setLevel(logging.DEBUG)
     else:
-        logger.setLevel(logging.ERROR)
+        logger.setLevel(logging.CRITICAL)
 
     formatter = logging.Formatter(
         "[%(asctime)s][%(levelname)s][%(filename)s:%(lineno)d] %(message)s")
